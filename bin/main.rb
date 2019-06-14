@@ -135,34 +135,36 @@ class GameInterface
     end
 
     def check_vertical_win(board)    
-        for i in 0..3
+        i = 0
+        3.times do
             if board[0][i] == "X" && board[1][i]  == "X" && board[2][i] == "X"
-                winner_text(@player_number)
+                return winner_text(@player_number)
                 game_stops
                 @no_draw = 1 if @count == 8
             elsif  board[0][i] == "O" &&  board[1][i]  == "O" && board[2][i] == "O"
-                winner_text(@player_number)
+                return winner_text(@player_number)
                 game_stops         
                 @no_draw = 1 if @count == 8
             end
+            i += 1
         end
     end
 
     def check_diagonal_win(board)     
         if board[0][0] == "X" && board[1][1] == "X" && board[2][2] == "X"
-            winner_text(@player_number)
+            return winner_text(@player_number)
             game_stops
             @no_draw = 1 if @count == 8
         elsif board[0][0] == "O" && board[1][1] == "O" && board[2][2] == "O"
-            winner_text(@player_number)
+            return winner_text(@player_number)
             game_stops
             @no_draw = 1 if @count == 8
         elsif board[2][0] == "X" && board[1][1] == "X" && board[0][2] == "X"
-            winner_text(@player_number)
+            return winner_text(@player_number)
             game_stops
             @no_draw = 1 if @count == 8
         elsif board[2][0] == "O" && board[1][1] == "O" && board[0][2] == "O"
-            winner_text(@player_number)
+            return winner_text(@player_number)
             game_stops
             @no_draw = 1 if @count == 8
         end
@@ -228,7 +230,7 @@ class GameInterface
       puts '*************************************************'
       puts "**************** #{name} Wins! *****************"
       puts '*************************************************'
-    #   return 2000
+      return 90
     end
 
     def draw_text

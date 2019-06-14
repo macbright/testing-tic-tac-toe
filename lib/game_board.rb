@@ -48,13 +48,13 @@ class GameBoard
     end
 
 
-    private 
 
     def position_taken(player)
         coordinates = player
         if @board[coordinates[0]][coordinates[1]] != nil
             return true
         end
+
     end
 
 
