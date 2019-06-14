@@ -4,8 +4,8 @@ require_relative '../lib/player.rb'
 class GameInterface
 
     def initialize   
-        print "\n Starting a new game \n \n"
-        game_instruction
+        # print "\n Starting a new game \n \n"
+        # game_instruction
         @board_this_game = GameBoard.new()
         @player1 = Player.new()
         @player2 = Player.new()
@@ -18,7 +18,6 @@ class GameInterface
         @win_already = 0
     end  
 
-    public
 
     def play_game
         ask_for_mark
@@ -97,8 +96,6 @@ class GameInterface
         @current_player.player_action = choosen_coordinates
 
     end
-
-    private
     
     def move_and_check
         print "\n"
@@ -124,15 +121,16 @@ class GameInterface
         i = 0
         3.times do 
             if board[i][0] == "X" && board[i][1]  == "X" && board[i][2] == "X"
-                winner_text(@player_number)
+              return  winner_text(@player_number)
                 game_stops
                 @no_draw = 1 if @count == 8
             elsif board[i][0] == "O" && board[i][1]  == "O" && board[i][2] == "O"
-                winner_text(@player_number)
+             return   winner_text(@player_number)
                 game_stops
                 @no_draw = 1 if @count == 8
             end
             i += 1
+
         end
     end
 
@@ -230,6 +228,7 @@ class GameInterface
       puts '*************************************************'
       puts "**************** #{name} Wins! *****************"
       puts '*************************************************'
+    #   return 2000
     end
 
     def draw_text
@@ -239,6 +238,7 @@ class GameInterface
       puts '*************************************************'
       puts "****************  It's a Draw!  *****************"
       puts '*************************************************'
+
     end
 
 
@@ -247,5 +247,5 @@ class GameInterface
 end
 
 
-new_game = GameInterface.new()
-new_game.play_game
+# new_game = GameInterface.new()
+# new_game.play_game
